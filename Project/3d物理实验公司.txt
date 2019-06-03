@@ -1,0 +1,36 @@
+NoBook
+https://www.nobook.com/
+
+北京润尼尔网络科技有限公司
+http://www.rainier.net.cn/
+
+矩道科技
+http://www.judaoedu.com/prodect_show.aspx?category_id=73                   http://www.sohu.com/a/167466407_99943996
+
+集美大学基础物理虚拟仿真实验教学中心
+http://pec.jmu.edu.cn/
+
+教育部批准100个国家级虚拟仿真实验教学中心
+http://news.sciencenet.cn/htmlnews/2016/2/338702.shtm
+
+
+国外
+
+Algodoo   https://www.algoryx.se/
+是瑞典Algoryx Simulation AB公司于2009年推出的趣味仿真实验平台，其前身是一款名为Phun的物理沙盒软件。Algodoo在Phun的基础上针对课堂教学做了优化，它给学生们带来了一个好玩的、卡通式的创作平台，科学地将教育与娱乐融合起来，鼓励学生发挥自己的创造力、动手能力和知识建构能力。
+
+//科罗拉多大学   https://phet.colorado.edu/zh_CN/   网页版，支持多语言
+
+
+美国科罗拉多州大学物理教育技术中心      https://phet.colorado.edu/en/simulations/category/physics/motion
+
+设计了基于JAVA技术的交互式仿真项目，这些项目涉及力、热、声、光、电以及量子物理中一些简单的物理实验以
+及物理现象，其中每一个项目都尽可能做到“交互式”、“游戏式”。其主要目的是激发学生学习的兴趣并帮助他们对物理概念以及物理原理的理解
+
+
+
+
+模型变形插件     MegaFiers
+
+Unity之megaFierstext翻书插件控制代码分析               https://blog.csdn.net/u012963349/article/details/45111485
+可弯曲软管的动态生成                                  https://blog.csdn.net/znybn1/article/details/78606873

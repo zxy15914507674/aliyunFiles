@@ -1,0 +1,18 @@
+PowerDesigner
+
+
+工程DbAccess,类库
+文件夹   CommonFunction
+         DBFunction
+
+DBFunction  类：DBConfig.cs    DBType.cs   SQLHelper.cs
+
+
+
+业务层模型层封装
+1 传统方法：手写代码实现
+2 商业开发模式：可以借助
+                 1 codemith studio动态代码生成器
+		 2 动软代码生成器
+
+ 

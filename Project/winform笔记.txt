@@ -1,0 +1,123 @@
+第1节-Winform窗体基础
+    组成部分：
+    添加控件：1 双击控件 2 单击控件后到窗体里再单击 3 按住鼠标左键拖画
+    注册事件：1 当 对象 发生 某个事件的时候，产生某个行为。
+	          2 默认事件，直接双击控件就注册的事件。
+                         3 为某个控件注册某个事件，点中控件，点击在控件的属性下的类似闪电的图标，找到要注册的事件，双击鼠标打开后台编码
+    设置属性：name（唯一标识1个控件对象）、text（显示的文本，对于窗体来讲，就是标题栏文本）
+	    属性和对象时一一对应的，未来，要设置谁的属性，都必须先选中该对象。
+    1、设置窗体位置
+        1）StartPosition：运行窗体时的起始位置；
+        2）Top、Left：上边距、左边距，实例（单击窗体时往右移动窗体）；
+        3）TopMost：窗体始终显示在最顶层；
+    2、设置窗体大小
+        1）Width、Height、FormBorderStyle：宽度、高度、边框样式，可以在控件属性上设置，也可以通过后台程序this.width=600,this.height=100设置
+        2）根据桌面调整窗体大小：Screen.PrimaryScreen.WorkingArea；
+        3）WindowState：设置窗体最大化、最小化或正常显示；
+        4）FormBorderStyle：设置为FixedSingle，则禁止改变窗体大小；
+        5）禁用最大化、最小化按钮：MaximizeBox、MinimizeBox；
+    3、设置标题栏
+        1）隐藏标题栏：FormBorderStyle设为None；
+        2）标题栏文本右对齐：RightToLeft设为Yes；
+        3）改变没有标题栏的窗体大小：Text=""  &&  ControlBox=True
+        4）图标：Icon
+    4、设置窗体背景
+        1）背景颜色：BackColor
+        2）背景图片：BackgroundImage（this.BackgroundImage=Image.FromFile()）
+        3）实例：随机更换窗体背景图片，把图片的地址都都存入一个数组里面，通过
+              string []path=Directory.GetFiles("c:\\test");获取test文件夹下的所有文件的文件名，再通过
+	设置 this.BackgroundImage = Image.FromFile(path(i));  //其中i是通过随机
+              Random r = new Random(); int i=r.Next(0, path.Length);获取
+
+
+第5节-TextBox文本框
+    1、多行文本：Multiline属性，也可以点击控件，等到出现小箭头，把Multiline单选框勾选
+    2、自动换行：WordWrap属性
+    3、密码框：PasswordChar属性，把属性的值设为*即可
+    4  获取文本框的文本：string tex=txtPwd.Text;
+    5、只允许输入数字：KeyPress事件e.KeyChar（按下的字符）、char.IsDigit（判断是否数字）、e.Handled（是否取消显示字符）
+    6  文本框默认的事件是值发生变化就触发
+    7 事件参数，(object sender ,KeyPressEventArg e) , e.KeyChar,获取键盘输入的字符 
+    实例： 两个窗体的文本框输入同步，一个文本框输入，另外一个文本框同步
+     
+    补充知识: 
+     char.IsDigit(e.KeyCode); //判断输入的字符是否是数字    
+     e.Handled=false;          //表示不取消显示到文本框
+
+第六节   图像控件PictureBox
+1   实例
+     点击按钮切换图片，按钮控件有上一张，下一张，PictureBox控件
+     步骤：1 定义一个字符串数组，用来存储页面加载的图片路径
+                 2 定义一个整型的字段，用来标识图片序号
+	   3 分别处理上一张按钮和下一张按钮的点击事件
+                     3.1 上一张按钮处理逻辑，如果是当前序号是0，则把序号设为字符串数组长度减1，否则序号加1
+                     3.2  下一张按钮处理逻辑，如果是当前序号为图片的长度减1，则把序号设为，否则序号加1
+                     设置图片的路径：picObject.ImageLocation=picPath[num];
+
+2 Timer控件
+ 属性Enabled设置true,它只有一个Tick事件
+ 案例：
+      在上面图片切换的基础上加入自动切换图片的功能
+      步骤：
+      1  实现自动切换图片的按钮的事件，在该事件方法中设置Timer控件的属性Enable为True
+      2  Timer控件的Enable属性设为True后Timer的事件就会每隔设定的时间(设置Timer的属性Internal)后执行一遍
+
+
+第六节  通讯录案例
+
+练习： 容器控件 GroupBox  单选框 RadioButton   复选框 CheckBox
+1 新建xml文件
+XmlDocument xDoc=new XmlDocument();
+ XmlDeclaration xmlDec= xDoc.CreateXmlDecaration("1.0","utf-8","yes");
+xDoc.AppendChild(xmlDec);
+//创建根节点,并加入到xDoc中
+xDoc.AppendChild(xDoc.CreateElement("Persons"));
+//保存,参数是文件名
+xDoc.Save("Contact.xml");
+
+
+写入Xml文档
+XmlDocument xDoc=new XmlDocument();
+xDoc.Load("Contact.xml");                             //加载文档
+XmlElement root=xDoc.DocumentElement;     //获取根节点
+
+XmlElement xePerson= xDoc.CreateElement("person");  //新建Persons节点
+xePerson.SetAttribute("phone","值");      //添加节点属性
+
+//为person节点添加子节点Name
+XmlElement xeName=xDoc.CreateElement("Name");
+xeName.InnerText="值";                     //设置子节点的值
+xePerson.AppendChild(xeName);
+//为person节点添加子节点Sex
+XmlElement xeSex=xDoc.CreteElement("Sex");
+xeSex.InnerText="值";                        //设置子节点的值
+xePerson.AppendChild(xeSex);
+
+root.AppendChild(xePerson);       //把新节点添加到根节点下
+
+xDoc.Save("Contact.xml");
+
+
+2 控件的遍历
+//取得控件组groupBox下的所有CheckBox控件
+foreach(CheckBox item in groupBox.Controls){
+  
+}
+
+第八节  ListBox列表框
+1 添加条目
+添加一个条目：listbox.Items.Add("北京");
+
+添加多个条目：listbox.Items.AddRange(new string[] {"成都","北京","云浮"});
+
+在某个位置插入条目:listbox.Items.Insert(2,"罗定");  //在北京后面插入罗定
+2 删除条目
+2.1 listbox.Items.Remove("名字");  //根据名字删除
+2.2 listbox.Items.RemoveAt(3);   //根据索引号删除
+2.3 listbox.Items.Clear();           //删除所有条目
+
+3 选中的条目
+listbox.SelectedItem.Tostring();  //选中的内容
+listbox.SelectedIndex;              //选中的索引好，没选中是-1                
+
+
